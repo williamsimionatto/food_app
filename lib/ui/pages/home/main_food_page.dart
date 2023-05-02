@@ -30,9 +30,14 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         text: 'Rio Grande do Sul',
                         color: AppColors.mainColor,
                       ),
-                      SmallText(
-                        text: 'Tapejara',
-                        color: Colors.black54,
+                      Row(
+                        children: [
+                          SmallText(
+                            text: 'Tapejara',
+                            color: Colors.black54,
+                          ),
+                          const Icon(Icons.arrow_drop_down_rounded)
+                        ],
                       ),
                     ],
                   ),
