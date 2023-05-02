@@ -2,12 +2,12 @@ import 'package:delivery_food_app/ui/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class BigText extends StatelessWidget {
-  Color? color;
+  final Color? color;
   final String text;
-  double fontSize;
-  TextOverflow overflow;
+  final double fontSize;
+  final TextOverflow overflow;
 
-  BigText({
+  const BigText({
     required this.text,
     this.color = AppColors.mainBlackColor,
     this.fontSize = 20,

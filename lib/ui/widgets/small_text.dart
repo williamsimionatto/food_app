@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:delivery_food_app/ui/utils/colors.dart';
 
 class SmallText extends StatelessWidget {
-  Color? color;
+  final Color? color;
   final String text;
-  double fontSize;
-  double lineHeight;
+  final double fontSize;
+  final double lineHeight;
 
-  SmallText({
+  const SmallText({
     required this.text,
     this.color = AppColors.mainBlackColor,
     this.fontSize = 12,
