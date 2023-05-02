@@ -1,4 +1,5 @@
 import 'package:delivery_food_app/ui/widgets/big_text.dart';
+import 'package:delivery_food_app/ui/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:delivery_food_app/ui/utils/colors.dart';
@@ -29,7 +30,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         text: 'Rio Grande do Sul',
                         color: AppColors.mainColor,
                       ),
-                      const Text('City'),
+                      SmallText(
+                        text: 'Tapejara',
+                        color: Colors.black54,
+                      ),
                     ],
                   ),
                   Center(
