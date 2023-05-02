@@ -18,7 +18,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
+          SizedBox(
             child: Container(
               margin: const EdgeInsets.only(top: 60, bottom: 15),
               padding: const EdgeInsets.only(left: 20, right: 20),

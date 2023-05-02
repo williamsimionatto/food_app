@@ -13,6 +13,18 @@ class FoodPageBody extends StatefulWidget {
 
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
+  var _currentPageValue = 0.0;
+  final double _scaleFactor = 0.8;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        _currentPageValue = pageController.page!;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,84 +41,124 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   }
 
   Widget _buildPageItem(int index) {
-    return Stack(
-      children: [
-        Container(
-          height: 220,
-          margin: const EdgeInsets.only(left: 10, right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: index.isEven
-                ? const Color(0xFF69c5DF)
-                : const Color(0xFFf8a170),
-            image: const DecorationImage(
-              image: AssetImage('assets/image/food0.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 120,
-            margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+    Matrix4 matrix = Matrix4.identity();
+    double _height = 220;
+
+    if (index == _currentPageValue.floor()) {
+      var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      var currentTransform = _height * (1 - currentScale) / 2;
+
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(0, currentTransform, 0);
+    } else if (index == _currentPageValue.floor() + 1) {
+      var currentScale =
+          _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
+      var currentTransform = _height * (1 - currentScale) / 2;
+
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(0, currentTransform, 0);
+    } else if (index == _currentPageValue.floor() - 1) {
+      var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      var currentTransform = _height * (1 - currentScale) / 2;
+
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(0, currentTransform, 0);
+    } else {
+      var currentScale = _scaleFactor;
+
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(0, _height * (1 - _scaleFactor) / 2, 1);
+    }
+
+    return Transform(
+      transform: matrix,
+      child: Stack(
+        children: [
+          Container(
+            height: _height,
+            margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: Colors.white,
-            ),
-            child: Container(
-              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const BigText(text: 'Chinese Side'),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Wrap(
-                        children: List.generate(5, (index) {
-                          return const Icon(
-                            Icons.star,
-                            color: AppColors.mainColor,
-                          );
-                        }),
-                      ),
-                      const SizedBox(width: 10),
-                      const SmallText(text: "4.5"),
-                      const SizedBox(width: 10),
-                      const SmallText(text: "1287"),
-                      const SizedBox(width: 10),
-                      const SmallText(text: "comments"),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: const <Widget>[
-                      IconText(
-                        icon: Icons.circle_sharp,
-                        text: "Normal",
-                        iconColor: AppColors.iconColor1,
-                      ),
-                      SizedBox(width: 10),
-                      IconText(
-                        icon: Icons.location_on,
-                        text: "1.7km",
-                        iconColor: AppColors.mainColor,
-                      ),
-                      SizedBox(width: 10),
-                      IconText(
-                        icon: Icons.access_time_rounded,
-                        text: "32min",
-                        iconColor: AppColors.iconColor2,
-                      )
-                    ],
-                  ),
-                ],
+              color: index.isEven
+                  ? const Color(0xFF69c5DF)
+                  : const Color(0xFFf8a170),
+              image: const DecorationImage(
+                image: AssetImage('assets/image/food0.png'),
+                fit: BoxFit.cover,
               ),
             ),
           ),
-        ),
-      ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 120,
+              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.white,
+              ),
+              child: Container(
+                padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    const BigText(text: 'Chinese Side'),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Wrap(
+                          children: List.generate(5, (index) {
+                            return const Icon(
+                              Icons.star,
+                              color: AppColors.mainColor,
+                            );
+                          }),
+                        ),
+                        const SizedBox(width: 10),
+                        const SmallText(text: "4.5"),
+                        const SizedBox(width: 10),
+                        const SmallText(text: "1287"),
+                        const SizedBox(width: 10),
+                        const SmallText(text: "comments"),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: const <Widget>[
+                        IconText(
+                          icon: Icons.circle_sharp,
+                          text: "Normal",
+                          iconColor: AppColors.iconColor1,
+                        ),
+                        SizedBox(width: 10),
+                        IconText(
+                          icon: Icons.location_on,
+                          text: "1.7km",
+                          iconColor: AppColors.mainColor,
+                        ),
+                        SizedBox(width: 10),
+                        IconText(
+                          icon: Icons.access_time_rounded,
+                          text: "32min",
+                          iconColor: AppColors.iconColor2,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 }
