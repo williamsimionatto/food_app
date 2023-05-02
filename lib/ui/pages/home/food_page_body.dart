@@ -2,6 +2,7 @@ import 'package:delivery_food_app/ui/utils/colors.dart';
 import 'package:delivery_food_app/ui/widgets/big_text.dart';
 import 'package:delivery_food_app/ui/widgets/icon_text.dart';
 import 'package:delivery_food_app/ui/widgets/small_text.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 class FoodPageBody extends StatefulWidget {
@@ -28,15 +29,31 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 320,
-      child: PageView.builder(
-        controller: pageController,
-        itemCount: 5,
-        itemBuilder: (context, position) {
-          return _buildPageItem(position);
-        },
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 320,
+          child: PageView.builder(
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, position) {
+              return _buildPageItem(position);
+            },
+          ),
+        ),
+        DotsIndicator(
+          dotsCount: 5,
+          position: _currentPageValue,
+          decorator: const DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: Size.square(9.0),
+            activeSize: Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
