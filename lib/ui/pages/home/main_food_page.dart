@@ -1,9 +1,6 @@
-import 'package:delivery_food_app/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
 
-import 'package:delivery_food_app/ui/widgets/big_text.dart';
-import 'package:delivery_food_app/ui/widgets/small_text.dart';
-import 'package:delivery_food_app/ui/utils/colors.dart';
+import 'package:delivery_food_app/ui/pages/pages.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
