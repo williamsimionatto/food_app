@@ -42,25 +42,25 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildPageItem(int index) {
     Matrix4 matrix = Matrix4.identity();
-    double _height = 220;
+    double height = 220;
 
     if (index == _currentPageValue.floor()) {
       var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
-      var currentTransform = _height * (1 - currentScale) / 2;
+      var currentTransform = height * (1 - currentScale) / 2;
 
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
         ..setTranslationRaw(0, currentTransform, 0);
     } else if (index == _currentPageValue.floor() + 1) {
       var currentScale =
           _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
-      var currentTransform = _height * (1 - currentScale) / 2;
+      var currentTransform = height * (1 - currentScale) / 2;
 
       matrix = Matrix4.diagonal3Values(1, currentScale, 1);
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
         ..setTranslationRaw(0, currentTransform, 0);
     } else if (index == _currentPageValue.floor() - 1) {
       var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
-      var currentTransform = _height * (1 - currentScale) / 2;
+      var currentTransform = height * (1 - currentScale) / 2;
 
       matrix = Matrix4.diagonal3Values(1, currentScale, 1);
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
@@ -69,7 +69,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       var currentScale = _scaleFactor;
 
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(0, _height * (1 - _scaleFactor) / 2, 1);
+        ..setTranslationRaw(0, height * (1 - _scaleFactor) / 2, 1);
     }
 
     return Transform(
@@ -77,7 +77,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: _height,
+            height: height,
             margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -98,6 +98,21 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0xFFe8e8e8),
+                    blurRadius: 5.0,
+                    offset: Offset(0, 5),
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, 0),
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(5, 0),
+                  ),
+                ],
               ),
               child: Container(
                 padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
