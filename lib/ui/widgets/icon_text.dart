@@ -1,3 +1,4 @@
+import 'package:delivery_food_app/ui/utils/dimensions.dart';
 import 'package:delivery_food_app/ui/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class IconText extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
+          size: Dimensions.iconSize20,
         ),
         const SizedBox(width: 5),
         SmallText(text: text)

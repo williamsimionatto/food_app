@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'package:delivery_food_app/ui/utils/colors.dart';
+import 'package:delivery_food_app/ui/utils/dimensions.dart';
 import 'package:delivery_food_app/ui/widgets/big_text.dart';
 import 'package:delivery_food_app/ui/widgets/icon_text.dart';
 import 'package:delivery_food_app/ui/widgets/small_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/material.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -59,7 +61,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildPageItem(int index) {
     Matrix4 matrix = Matrix4.identity();
-    double height = 220;
+    double height = Dimensions.pageViewContainer;
 
     if (index == _currentPageValue.floor()) {
       var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -94,13 +96,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: height,
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            height: Dimensions.pageViewHeight,
+            margin: EdgeInsets.only(
+              left: Dimensions.width10,
+              right: Dimensions.width10,
+            ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: index.isEven
-                  ? const Color(0xFF69c5DF)
-                  : const Color(0xFFf8a170),
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
               image: const DecorationImage(
                 image: AssetImage('assets/image/food0.png'),
                 fit: BoxFit.cover,
@@ -110,10 +112,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
-              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+              height: Dimensions.pageViewTextContainer,
+              margin: EdgeInsets.only(
+                left: Dimensions.widtht30,
+                right: Dimensions.widtht30,
+                bottom: Dimensions.widtht30,
+              ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius15),
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -132,12 +138,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 ],
               ),
               child: Container(
-                padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                  top: Dimensions.height15,
+                  left: 15,
+                  right: 15,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const BigText(text: 'Chinese Side'),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       children: [
                         Wrap(
@@ -156,21 +166,20 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         const SmallText(text: "comments"),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const <Widget>[
                         IconText(
                           icon: Icons.circle_sharp,
                           text: "Normal",
                           iconColor: AppColors.iconColor1,
                         ),
-                        SizedBox(width: 10),
                         IconText(
                           icon: Icons.location_on,
                           text: "1.7km",
                           iconColor: AppColors.mainColor,
                         ),
-                        SizedBox(width: 10),
                         IconText(
                           icon: Icons.access_time_rounded,
                           text: "32min",

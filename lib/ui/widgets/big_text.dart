@@ -1,4 +1,5 @@
 import 'package:delivery_food_app/ui/utils/colors.dart';
+import 'package:delivery_food_app/ui/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class BigText extends StatelessWidget {
@@ -10,7 +11,7 @@ class BigText extends StatelessWidget {
   const BigText({
     required this.text,
     this.color = AppColors.mainBlackColor,
-    this.fontSize = 20,
+    this.fontSize = 0,
     this.overflow = TextOverflow.ellipsis,
     super.key,
   });
@@ -22,7 +23,7 @@ class BigText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontSize: fontSize,
+        fontSize: fontSize == 0 ? Dimensions.font20 : fontSize,
         fontWeight: FontWeight.w400,
         fontFamily: 'Roboto',
       ),
