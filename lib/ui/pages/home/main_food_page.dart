@@ -1,7 +1,8 @@
-import 'package:delivery_food_app/ui/widgets/big_text.dart';
-import 'package:delivery_food_app/ui/widgets/small_text.dart';
+import 'package:delivery_food_app/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
 
+import 'package:delivery_food_app/ui/widgets/big_text.dart';
+import 'package:delivery_food_app/ui/widgets/small_text.dart';
 import 'package:delivery_food_app/ui/utils/colors.dart';
 
 class MainFoodPage extends StatefulWidget {
@@ -26,17 +27,17 @@ class _MainFoodPageState extends State<MainFoodPage> {
                 children: [
                   Column(
                     children: <Widget>[
-                      BigText(
+                      const BigText(
                         text: 'Rio Grande do Sul',
                         color: AppColors.mainColor,
                       ),
                       Row(
-                        children: [
+                        children: const <Widget>[
                           SmallText(
                             text: 'Tapejara',
                             color: Colors.black54,
                           ),
-                          const Icon(Icons.arrow_drop_down_rounded)
+                          Icon(Icons.arrow_drop_down_rounded)
                         ],
                       ),
                     ],
@@ -56,6 +57,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          const FoodPageBody(),
         ],
       ),
     );
