@@ -7,7 +7,6 @@ import 'package:delivery_food_app/ui/widgets/big_text.dart';
 import 'package:delivery_food_app/ui/widgets/icon_text.dart';
 import 'package:delivery_food_app/ui/widgets/small_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -208,4 +207,3 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     super.dispose();
   }
 }
-
