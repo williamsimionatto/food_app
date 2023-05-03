@@ -16,7 +16,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
       body: Column(
         children: const <Widget>[
           FoodPageHead(),
-          FoodPageBody(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: FoodPageBody(),
+            ),
+          ),
         ],
       ),
     );

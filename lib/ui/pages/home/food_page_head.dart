@@ -52,7 +52,7 @@ class FoodPageHead extends StatelessWidget {
                 child: Icon(
                   Icons.search,
                   color: Colors.white,
-                  size: Dimensions.iconSize20,
+                  size: Dimensions.iconSize24,
                 ),
               ),
             )

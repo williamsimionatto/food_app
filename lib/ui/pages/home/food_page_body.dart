@@ -1,3 +1,4 @@
+import 'package:delivery_food_app/ui/pages/home/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:delivery_food_app/ui/utils/colors.dart';
@@ -55,6 +56,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ),
           ),
         ),
+        SizedBox(height: Dimensions.height30),
+        const PopularText(),
+        const ListPopularFoods(),
       ],
     );
   }
@@ -96,7 +100,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: Dimensions.pageViewHeight,
+            height: Dimensions.pageViewContainer,
             margin: EdgeInsets.only(
               left: Dimensions.width10,
               right: Dimensions.width10,
