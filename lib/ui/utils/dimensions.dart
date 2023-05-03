@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class Dimensions {
   static double? screenHeight = Get.context?.height;
-  static double? screenWidth = Get.context?.height;
+  static double? screenWidth = Get.context?.width;
 
   static double pageViewHeight = screenHeight! / 2.64;
   static double pageViewContainer = screenHeight! / 3.84;
@@ -28,5 +28,8 @@ class Dimensions {
   static double radius20 = screenHeight! / 42.2;
   static double radius30 = screenHeight! / 28.13;
 
-  static double iconSize20 = screenHeight! / 42.2;
+  static double iconSize24 = screenHeight! / 35.17;
+
+  static double listViewImgSize = screenWidth! / 3.25;
+  static double listViewTextContSize = screenWidth! / 3.9;
 }
