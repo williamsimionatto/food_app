@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:delivery_food_app/ui/pages/widgets/food_detail.dart';
 import 'package:delivery_food_app/ui/utils/dimensions.dart';
 import 'package:delivery_food_app/ui/widgets/widgets.dart';
-import 'package:flutter/material.dart';
+
+import './widgets/widgets.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Positioned(
@@ -56,17 +60,21 @@ class PopularFoodDetail extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Column(
-                children: const <Widget>[
-                  FoodDetail(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const FoodDetail(
                     foodName: 'Chinese Side',
                     rating: 4,
                   ),
+                  SizedBox(height: Dimensions.height20),
+                  const BigText(text: "Introduce")
                 ],
               ),
             ),
           )
         ],
       ),
+      bottomNavigationBar: const FoodDetailBottomNavigationBar(),
     );
   }
 }
