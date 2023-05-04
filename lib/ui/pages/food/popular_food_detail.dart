@@ -55,7 +55,14 @@ class PopularFoodDetail extends StatelessWidget {
                 ),
                 color: Colors.white,
               ),
-              child: const FoodDetail(),
+              child: Column(
+                children: const <Widget>[
+                  FoodDetail(
+                    foodName: 'Chinese Side',
+                    rating: 4,
+                  ),
+                ],
+              ),
             ),
           )
         ],

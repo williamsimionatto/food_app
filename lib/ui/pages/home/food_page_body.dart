@@ -145,7 +145,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: 15,
                   right: 15,
                 ),
-                child: const FoodDetail(),
+                child: const FoodDetail(
+                  foodName: 'Chinese Side',
+                  rating: 5,
+                ),
               ),
             ),
           ),

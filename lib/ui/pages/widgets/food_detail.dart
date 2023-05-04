@@ -5,19 +5,29 @@ import 'package:delivery_food_app/ui/utils/dimensions.dart';
 import 'package:delivery_food_app/ui/widgets/widgets.dart';
 
 class FoodDetail extends StatelessWidget {
-  const FoodDetail({super.key});
+  final String foodName;
+  final int rating;
+
+  const FoodDetail({
+    required this.foodName,
+    required this.rating,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const BigText(text: 'Chinese Side'),
+        BigText(
+          text: foodName,
+          fontSize: Dimensions.font26,
+        ),
         SizedBox(height: Dimensions.height10),
         Row(
           children: [
             Wrap(
-              children: List.generate(5, (index) {
+              children: List.generate(rating, (index) {
                 return const Icon(
                   Icons.star,
                   color: AppColors.mainColor,
